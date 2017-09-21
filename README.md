@@ -4,9 +4,9 @@
 
 ```
 owner:
-    hid: 342
+    hid: 343
     name: Usifo, Borga
-    url: https://github.com/bigdata-i523/hid342
+    url: https://github.com/bigdata-i523/hid343
 ```
 
 # Paper 1
