@@ -53,8 +53,8 @@ paper2:
    - Borga Edionse Usifo
    hid:
    - 343
-   title: Benchmarking a BigData Docker deployment
-   abstract: This paper showcases tis and that and the other 
+   title: 
+   abstract: 
    url: https://github.com/bigdata-i523/sample-pid000/project/report.pdf
    type: latex
    status: in progress
