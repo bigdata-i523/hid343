@@ -14,13 +14,11 @@ owner:
 ```
 paper1:
    author: 
-   - Gregor von Laszewski
-   - Fugang Wang
+   - Borga Usifo
    hid:
-   - 000
-   - 001
-   title: This is my paper about xyz
-   abstract: This paper showcases this and that and the other
+   - 343
+   title: This is my paper about Big Data Applications in Self-Driving Cars (Approval Waiting)
+   abstract: This paper showcases the applications of big data in self-driving cars world. 
    url: https://github.com/bigdata-i523/sample-hid000/paper1/paper1.pdf
    type: latex
    
