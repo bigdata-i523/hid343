@@ -30,9 +30,9 @@ paper1:
 ```
 paper2:
    author: 
-   - Gregor von Laszewski
+   - Borga Usifo
    hid:
-   - 000
+   - 343
    title: This is my paper about the other abc
    abstract: This paper showcases tis and that and the other in regards to abc
    url: https://github.com/bigdata-i523/sample-hid000/paper2/paper2.pdf   
