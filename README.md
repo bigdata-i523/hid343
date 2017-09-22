@@ -50,9 +50,9 @@ paper2:
    type: project
    type: report
    author: 
-   - Gregor von Laszewski
+   - Borga Edionse Usifo
    hid:
-   - 000
+   - 343
    title: Benchmarking a BigData Docker deployment
    abstract: This paper showcases tis and that and the other 
    url: https://github.com/bigdata-i523/sample-pid000/project/report.pdf
