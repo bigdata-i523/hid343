@@ -17,13 +17,14 @@ paper1:
    - Borga Usifo
    hid:
    - 343
-   title: This is my paper about Big Data Applications in Self-Driving Cars (Approval Waiting)
-   abstract: This paper showcases the applications of big data in self-driving cars world. 
+   title: Big Data Applications in Self-Driving Cars (Approval Waiting)
+   abstract: >
+       This paper showcases the applications of big data in self-driving cars world. 
    url: https://github.com/bigdata-i523/sample-hid000/paper1/paper1.pdf
    type: latex
-   
    status: in progress
- ```
+   chapter: Transportation
+```
    
 # Paper 2
 
