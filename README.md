@@ -22,7 +22,7 @@ paper1:
        This paper showcases the applications of big data in self-driving cars world. 
    url: https://github.com/bigdata-i523/sample-hid000/paper1/paper1.pdf
    type: latex
-   status: in progress
+   status: 100%
    chapter: Transportation
 ```
    
