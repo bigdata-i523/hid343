@@ -1,44 +1,21 @@
-\documentclass{acmart}
+\documentclass[sigconf]{acmart}
 
 \input{format/i523}
 
 \begin{document}
 
 \title{I523: Project/Report: 343: Big Data Applications and Autonomous Vehicles}
-% chose project if you do a project
-% chose report if you do a report
-% project number is a 3 digit number that specifies your gitlab dir
-% e.g. 000, 001, ....
 
-\subtitle{\url{https://gitlab.com/cloudmesh_fall2016/project-343/}}
-% replace 000 with your number
-
-\numberofauthors{1} 
-\author{
-\alignauthor
-Borga Edionse Usifo\\
-HID 1\\
-       \affaddr{Indiana University}\\
-       \affaddr{Bloomington, IN}\\
-       \email{busifo@iu.edu}
-\alignauthor
-Author Two\\
-HID 2\\
-       \affaddr{Institute Two}\\
-       \affaddr{Address Two}\\
-       \email{author.two@emails.com}
-\alignauthor
-Author Three\\ 
-HID 3\\
-       \affaddr{Institute Three}\\
-       \affaddr{Address Three}\\
-       \email{author.three@emails.com}
+\author{Borga Edionse Usifo}
+\affiliation{%
+\institution{HID1 {\url{https://gitlab.com/cloudmesh_fall2016/project-343/}}}
 }
+\email{busifo@iu.edu}
 
-\date{20 April 2013}
-
+\renewcommand{\shortauthors}{B. Trovato et al.}
 
 \maketitle
+
 \begin{abstract}
 This paper will explain the importance of autonomous vehicles, Big Data applications used on these vehicles, and several computational methods used for achieving successful autonomy. 
 \end{abstract}
@@ -47,33 +24,34 @@ This paper will explain the importance of autonomous vehicles, Big Data applicat
 The way of life is changing every day with the help of technological advancements. We keep hearing more and more by companies how they are trying to make the computers to think and react like human beings. Autonomous vehicles are one of the products of these advancements. 
 \par The main difference of learning between humans and computer is the way of gathering experience. Humans learn from experience but computers learn from the data. This is why data is the most fundamental aspect for the computer to do given task. In this paper, we will learn about how computers process data what kind of analytic used for processing and learning from data and importance of big data.    
 
-
+\TODO{None of the images are refered to in text with ref}
+\TODO{This paper did not follow our class format}
 
 
 \section{Importance of Autonomous Vehicles}
 
 Autonomous vehicles are essential, and it is the future of driving method to going A to B. There are several reasons for it which will change the future of driving. Before we go into detail about autonomous vehicles we need to learn types of autonomous vehicles which are listed below: 
 
-\begin{itemize}
-    \item \textbf{Level 0(no automation):} The driver responsible for all aspects of vehicle instruments while monitoring road conditions.\cite{hamzah}
-    \item \textbf{Level 1(function-specific automation):} ``Automation at this level involves on or more specific control functions; if multiple functions are automated, they operate independently of each other. ``\cite{hamzah}
-    \item \textbf{Level 2(combined-function automation):} ``This level involves automation of at least two primary control functions designed to work in unison to relieve the diver of controlling those functions. ``\cite{hamzah}
-    \item \textbf{Level 3(limited self-driving automation):} ``Vehicles at this level of automation enable the driver to have full control of all safety-critical functions under certain traffic or environmental conditions, and in those conditions to rely heavily on the vehicle to monitor for changes in those conditions requiring transition back to driver control. ``\cite{hamzah}
-    \item \textbf{Level 4(full self-driving automation):} `` The vehicle designed to perform all safety-critical driving functions and monitor road-way conditions for an entire trip``\cite{hamzah}
-\end{itemize}
+\begin{description}
+    \item[Level 0(no automation):] The driver responsible for all aspects of vehicle instruments while monitoring road conditions.\cite{hamzah}
+    \item[Level 1(function-specific automation):] ``Automation at this level involves on or more specific control functions; if multiple functions are automated, they operate independently of each other. ``\cite{hamzah}
+    \item[Level 2(combined-function automation):] ``This level involves automation of at least two primary control functions designed to work in unison to relieve the diver of controlling those functions. ``\cite{hamzah}
+    \item[Level 3(limited self-driving automation):] ``Vehicles at this level of automation enable the driver to have full control of all safety-critical functions under certain traffic or environmental conditions, and in those conditions to rely heavily on the vehicle to monitor for changes in those conditions requiring transition back to driver control. ``\cite{hamzah}
+    \item[Level 4(full self-driving automation):] `` The vehicle designed to perform all safety-critical driving functions and monitor road-way conditions for an entire trip``\cite{hamzah}
+\end{description}
 
 \subsection{Safety Aspect}
 Increasing safety features in motor vehicles is decreasing the number of crashes, if we look at the data from U.S. Census Bureau we can see that from 1980 to 2009 we have decreased in accidents. We can not tie all these decreases into technology because road structure and personal education also increased. According to the National Highway Traffic Safety Administration(NHTSA)
  
  \begin{figure}[!ht]
   \centering
-      \includegraphics[width=1.0\columnwidth, height = 3.0cm]{images/picture5.png}
+      \includegraphics[width=\columnwidth]{images/picture5.png}
   \caption{Note: Data from BTS(2013) includes all highway transportation modes: pass anger car, light truck, motorcycle, large truck, and bus. Fatalities include vehicle occupants for all highway modes, as well as pedestrians and cyclists}\label{fig:NHTSAaccidentreport}
 \end{figure}
 
  \begin{figure}[!ht]
   \centering
-      \includegraphics[width=1.0\columnwidth, height= 3.0 cm]{images/picture6.png}
+      \includegraphics[width=\columnwidth]{images/picture6.png}
   \caption{Note: Data from the Bureau of Transportation Statistics(BTS,2013) includes all highway transportation modes: passenger car, light truck, motorcycle, large truck, and bus. Crashes involving two or more motor vehicles are counted as one ``crash`` by the U.S. DOT, so total crashes shown  here are fewer than the sum of individual vehicles involved. Injuries include vehicle occupants for all highway modes as well as pedestrians and cyclists.}\label{fig:NHTSAaccidentreport2}
 \end{figure}
 
@@ -88,36 +66,30 @@ Increasing safety features in motor vehicles is decreasing the number of crashes
 
 \subsection{Economic Aspect}
 Beside from saving money from increasing the safety while decreasing the economic cost of motor vehicles, autonomous vehicles can improve many aspects of business and government supply chain industry, gas usage, time of commuting, and productivity.
-\begin{center}
+
 ``Our research finds that the social benefits of autonomous vehicles including decreased crashes, increased mobility and increases in fuel economy will outweigh the likely disadvantages,``\cite{RAND}
-\end{center}
+
 \subsubsection{Fuel Consumption}As technology improves every day, we see live traffic events in our navigation apps, and optimally its steering individuals to go to different directions based on traffic events to eliminate any waste from commuting. With the help of autonomous vehicles, this live data directly go to intelligent vehicle systems and an autonomous car will steer their directions without the need of human interaction. An intelligent system like this improve the fuel consumption and decrease the commuting time from point A to B.
 
 \begin{figure}[!ht]
   \centering
-      \includegraphics[width=1.0\columnwidth, height = 4.0cm]{images/picture7.png}
+      \includegraphics[width=\columnwidth]{images/picture7.png}
   \caption{Range of Fuel Economy Improvements for Conventional, Hybrid, and Autonomous Cars}\label{F:fuelconsumption}
 \end{figure}
 
 \subsubsection{Supply Chain} As of year, 2017 majority of companies essential success to stay in competitive is the supply chain.  Autonomous vehicles will have a high impact on supply chain distributions because of ability to operate 24/7 in right circumstances, and faster travel times. Self-driving vehicles will also help the current driver shortage situation in supply chain businesses.
 
-\begin{center}
     ``In 2014 trucking industry was short 38,000 drivers. The shortage expected to reach nearly 48,000 in 2015 and if the current trend holds, shortage may balloon to almost 175,000 by 2024``\cite{ATA}
-\end{center}
 
 \begin{figure}[h]
   \centering
-      \includegraphics[width=1.0\columnwidth]{images/picture8.png}
+      \includegraphics[width=\columnwidth]{images/picture8.png}
   \caption{Forecast of Truck Driver Shortage}\label{F:small}
 \end{figure}
 
 \subsubsection{Productivity}Autonomous vehicle will also give people to do multitasking abilities for productivity improvements. Individuals will have more free time to do other tasks. 
 
-\begin{center}
-    ``Currently, in the U.S., the average occupant of a light-duty vehicle spends about an hour a
-day traveling time that could potentially be put to more productive use. Indeed, increased
-productivity is one of the expected benefits of self-driving vehicles.``\cite{michigan}
-\end{center}
+``Currently, in the U.S., the average occupant of a light-duty vehicle spends about an hour a day traveling time that could potentially be put to more productive use. Indeed, increased productivity is one of the expected benefits of self-driving vehicles.``\cite{michigan}
 
 
 
@@ -130,13 +102,13 @@ productivity is one of the expected benefits of self-driving vehicles.``\cite{mi
 
 \begin{figure}[!ht]
   \centering
-      \includegraphics[width=1.0\columnwidth]{images/picture3.png}
+      \includegraphics[width=\columnwidth]{images/picture3.png}
   \caption{How Big Data and Connectivity Works}\label{F:connectivity}
 \end{figure}
 
 \begin{figure}[!ht]
   \centering
-      \includegraphics[width=1.0\columnwidth]{images/picture2.png}
+      \includegraphics[width=\columnwidth]{images/picture2.png}
   \caption{Process of Connectivity}\label{fig:hbsconnectivitysteps}
 \end{figure}
 
@@ -152,15 +124,13 @@ Machine learning widely used for many applications. Some of this applications in
 
 \begin{figure}[h]
   \centering
-      \includegraphics[width=1.0\columnwidth]{images/picture4.jpg}
+      \includegraphics[width=\columnwidth]{images/picture4.jpg}
   \caption{World from an Eye of Autonomous Vehicle}\label{F:Lidar}
 \end{figure}
 
 \subsubsection{Should we store this data in someplace or analyze it simultaneously}
 Current technology and Big Data methods allows self-driving or any other autonomous vehicles to analyze data on the go.\cite{www-sas} 
-\begin{center}
     ``Analyze it on the fly. Rather than bringing data to the storage and analytics, bring the analytics to the data"\cite{www-sas}
-\end{center}
 
 \subsection{Conventional Neural Networks}
 
@@ -168,7 +138,7 @@ Conventional Neural Networks (CNN)\cite{nvidia} used in pattern recognition appl
 
 \begin{figure}[!ht]
   \centering
-      \includegraphics[width=1.0\columnwidth, height = 3cm]{images/picture11.png}
+      \includegraphics[width=\columnwidth]{images/picture11.png}
   \caption{CNN Process Steps}\label{F:nvidiaCNNmodel}
 \end{figure}
 
@@ -178,25 +148,23 @@ Big data can help to maximize safety aspects in self-driving cars by using Big D
 \par This kind of cloud system will also give the user to ability choose between fastest route or the best fuel consumption, but the safety is always going to be the first priority. (Below Fig) shows the pseudo-code for implementing in Big Data Engine.
 \begin{figure}[!ht]
   \centering
-      \includegraphics[width=1.0\columnwidth]{images/picture9.png}
+      \includegraphics[width=\columnwidth]{images/picture9.png}
   \caption{Big Data Road Passage Safety Process Steps}\label{F:architecture}
 \end{figure}
 
 \begin{figure}[!ht]
   \centering
-      \includegraphics[width=1.0\columnwidth]{images/picture10.png}
+      \includegraphics[width=\columnwidth]{images/picture10.png}
   \caption{Pseudo-code for Road Passage Safety}\label{F:pseudo-code}
 \end{figure}
 
 \section{Conclusion}
     In this paper importance of autonomous vehicle and Big Data based applications on an autonomous vehicle is presented. Insights about advantages of autonomous vehicles had given. Several analytical approaches while using Big Data applications had shown.
 
-\bibliographystyle{IEEEtran}
-\bibliography{report}
 
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{report} 
 
-
-%\balancecolumns 
 
 
 \end{document}
