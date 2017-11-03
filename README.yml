@@ -8,7 +8,7 @@ paper1:
         This paper showcases the applications of big data in self-driving cars
         world.
     author:
-        - Borga Usifo
+        - Borga Edionse Usifo
     chapter: Transportation
     hid:
         - 343
@@ -20,9 +20,10 @@ paper2:
     abstract: null
     author:
         - Borga Edionse Usifo
+    chapter: Manufacturing
     hid:
         - 343
     status: in progress
-    title: null
+    title: Big Data Applications and Manufacturing
     type: latex
     url: https://github.com/bigdata-i523/sample-pid000/project/report.pdf
