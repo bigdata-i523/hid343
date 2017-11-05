@@ -71,7 +71,7 @@ There are many application areas of Big Data technologies and research related t
 
 \par There are requirement tools and techniques for processing of Big Data. These resources include ``process capability, memory, storage, and networks, such as Hadoop Distributed File System (HDFS), MapReduce, YARN, HBase, HiveQL, NoSQL, and other \cite{BABICEANU2016128}.``
 
-\par Standardization required for Big Data applications, which we can refer to these standardizations as dimensions of Big Data applications. Three most fundamental dimensions are \cite{BABICEANU2016128, ZHONG2016572}:
+\par Standardization required for Big Data applications, which we can refer to these standardization as dimensions of Big Data applications. Three most fundamental dimensions are \cite{BABICEANU2016128, ZHONG2016572}:
 
 \begin{itemize}
     \item Volume: Data is no longer in small amounts its made by a significant amount. ``It is calculated that a personal care manufacturer generates 5000 data samples every 33ms, resulting in 152,000 samples per second, 9 million per minute, 13 billion per day, and 4 trillion samples per year.``
@@ -89,6 +89,14 @@ There are many application areas of Big Data technologies and research related t
     \item Variability: Variation in the data which addresses the inconsistency and approximation. 
     \item Volatility: Old data should easily replaceable with a new generated data source because old data may have expiration cycle.
     \end{itemize}
+    
+\par Process flows as shown in Figure for accurate Big Data implementation Figure\ref{fig:5V}\cite{HE2017}.  
+
+ \begin{figure}[!ht]
+  \centering
+      \includegraphics[width=\columnwidth]{paper2/images/5V.png}
+  \caption{Process Flow of V's for accurate data gathering}\label{fig:5V}
+\end{figure}
     
 \par This additional dimensions improves the quality and characteristics of data, which collected from manufacturing processes and any related applications \cite{BABICEANU2016128}.
 \par Some reports have been shown that Big Data analytics is enabling manufacturing operations to get timely and accurate insights from data to continuously improve for better manufacturing operations while using ``predictive analysis, machine learning, HUFFS, and Map Reduce tools \cite{BABICEANU2016128}.``  
@@ -123,9 +131,12 @@ Economic loses of unexpected maintenance on manufacturing operations can have a 
 
 \subsection{Statistical Process Monitoring for Smart Manufacturing}
 
-As we stated before the first version of statistical process monitoring (SPM) was found in Bell Laboratories which was successfully reduced the additional adjustments as well as improved the production quality inside process by analyzing statistical distribution method of normal distribution. It was estimating the mean ($\overline{m}$) and the standard deviation $\sigma $. Anything outside the ($\overline{m}\pm 3\sigma$) is considered to take an action point or investigation point for assignable cause \cite{HE2017}. The major drawback for SPM was to fail to detect two properties of an item whenever the fault occurs.   
+As we stated before the first version of statistical process monitoring (SPM) was found in Bell Laboratories which was successfully reduced the additional adjustments as well as improved the production quality inside process by analyzing statistical distribution method of normal distribution. It was estimating the mean ($\overline{m}$) and the standard deviation $\sigma $. Anything outside the ($\overline{m}\pm 3\sigma$) is considered to take an action point or investigation point for assignable cause \cite{HE2017}. The major drawback for SPM was to fail to detect two properties of an item whenever the fault occurs.
+
 
 \par Second versions of statistical process control introduced in 1980's which called multivariate statistical process monitoring (MSPM). The underlying statistical method was ``exploring correlations between process and quality variables \cite{HE2017}``. This method was more robust when identifying the fault when two or more properties were in action and as a result, they widely used in manufacturing processes \cite{HE2017}. There are also some limitations with the MSPM when there is ``non-linear relationship between variables, present outliers, failed sensors, multimodal distribution \cite{HE2017}.``
+
+
 
 \par Third version of statistical controls are still emerging, and this is the part where new Big Data analytical techniques come into play. These analytical techniques expected to utilize more information which lacks on the first and second generation and expected to become an essential basis of profitability, quality, and many more aspects.
 
