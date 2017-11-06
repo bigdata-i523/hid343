@@ -5,7 +5,7 @@ owner:
     url: https://github.com/bigdata-i523/hid343
 paper1:
     abstract: >
-        This paper showcases the applications of big data in self-driving cars
+        This paper showcases the importance of autonomous vehicles, Big Data applications used on these vehicles, and several computational methods used for achieving successful autonomy. 
         world.
     author:
         - Borga Edionse Usifo
