@@ -24,7 +24,7 @@ paper2:
     chapter: Manufacturing
     hid:
         - 343
-    status: in progress
+    status: 100 %
     title: Big Data Applications and Manufacturing
     type: latex
     url: https://github.com/bigdata-i523/sample-pid000/project/report.pdf
