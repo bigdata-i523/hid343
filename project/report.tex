@@ -18,17 +18,20 @@
 \renewcommand{\shortauthors}{B. Usifo et al.}
 
 \begin{abstract}
-
+This project takes a closer look to some of the most used supervised learning algorithms in machine learning. We start with the description of the each of the algorithms then we move it to analytics and findings by using that particular algorithm in our data-set. We also provide advantages and disadvantages of each supervised machine learning algorithm for future reference. We mainly focus on our prediction of income level of individuals by looking at their age, gender, education, location, and other features given by our data-set. We will try our each algorithms and try to pick the best features from our data-set to have optimal prediction.
 \end{abstract}
 
-\keywords{i523, HID343, Manufacturing, Industry 4.0, Autonomous Decision in Manufacturing, Analytics in Manufacturing}
+\keywords{i523, HID343, Machine Learning, Income Prediction, Logistic Regression, Ensemble methods}
 
 \maketitle
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Introduction}
 
-
+In this project we try to showcase the performance of the machine learning algorithms on a data which we gather from UCI machine learning repository \cite{www-uci}. This data has been used by Kohavi R. and Becker B. for their research in improving of the in Naive Bayes Classifier's accuracy \cite{Kohavi:1996:SUA:3001460.3001502}. 
+\par Data consist from 15 variables and we try to predict the income of the individuals. In order to do this prediction task we first started with data preparation because the data we receive from UCI machine learning repository \cite{www-uci} was not fully prepared for any machine learning algorithm. Our first task was the clean the data while applying some statistical techniques to get insights from the dataset. We also used data transformation methods like One-Hot-Encoding\cite{www-hackernoon} to apply logarithmic functions for improving the machine learning algorithms performance before training the data. 
+\par Machine Learning algorithms that we discuss in this paper are Gaussian Naive Bayes \cite{www-wikipedia-naivebayes}, K Nearest Neighbors \cite{Lee2017-knn}, Ensemble Methods (Boosting) \cite{dietterich-ensemble}, Support Vector Machines \cite{www-simafore-svm}, Logistic Regression \cite{adarsh}, and Decision Trees \cite{www-wikipedia.decision}. We try to show their weakness, advantages, and their time consumption while training each of them in machine learning algorithms section. 
+\par After providing brief intoroduction of each of the supervised machine learning algorithms, we will discuss about our findings for of each of the algorithms by comparing their accuracy score, F-1 score, recall, and lastly time comparison. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -38,7 +41,116 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{How it related to big data analytics}
+\section{Data Preparation}
+
+We first used the pandas \cite{www-pandas} to help loading the data in dataframe format. This gave us an unique advantage and faster processing of comma separated values for putting into dataframe \cite{www-commasep}.  Our data consist from 15 variables. Some of these variables are continuous and some of them are categorical variables and our target variable was ``income`` attribute. After putting the data into dataframe we first got a statistical snapshot of continuous variable by using the pandas \cite{www-pandas.describe} functions. 
+
+%%%%%Include table over here describe %%%%%%%%
+\subsection{Data Cleaning}
+
+After getting a snapshot from our dataframe we recognized that there is a column which has no meaning. First task was to remove this entire column from our dataset we used pandas drop function for doing this task. After removing this column we had more concise dataframe to analyze. 
+
+\par Moreover, removing the column we have encountered some missing values which labeled as ``question marks`` in dataframe. In order to remove this values we first changed all the ``question mark`` values to ``NaN`` values by using pandas ``replace`` function \cite{www-pandas.replace}. After replacing all the question marks with ``NaN`` values we used pandas missing value dropping function to remove all the ``NaN`` values from our dataset. 
+
+\par Furthermore, we start investigating the types of the variables and  in our case we found 2 types of variable one of them was labeled as ``int64`` which stands for integer values, other one labeled as object type of variable. From our previous example especially in ``scikit-learn`` it is better to use float object rather than ``int64`` for training the machine learning algorithms. Because their numerical output most of the time is ``float64`` object. We transferred all the ``int64`` objects to ``float64`` objects. This was the last step of of cleaning process. 
+
+\par Our last process is changing the string values to numerical values on our target data which consist of string values (``\$ 50K``) in order for machine learning algorithms to understand this target data we need to transfer it to numerical values. Since we have only two categories we will assign 1 and 0 as a numerical values. 
+
+\begin{center}
+\begin{tabular}{ |c|c| } 
+ \hline
+ Description & Assigned Value  \\ 
+Individuals who makes more than \$ 50K  & 1  \\ 
+Individuals who makes at or less than \$ 50K & 0  \\ 
+ \hline
+\end{tabular}
+\end{center}
+
+\par Our shape of the data will also receive impact from changing to numerical. Our number of futures will go from 14 to 103. This is because we implemented one-hot-encode to our dataset. It is called one hot encoded because we transform the categorical variables into a more understandable shape for the machine learning algorithms to perform well \cite{www-hackernoon}. In other words ``we implement binarization of the category to include as a future to train model \cite{www-hackernoon}``. As we can see in Figure \ref{fig:one-hot-before} and Figure\ref{fig:one-hot-after}.
+
+ \begin{figure}[!ht]
+  \centering
+      \includegraphics[width=\columnwidth]{project/images/one-hot-before.png}
+  \caption{Example of One Hot Encoding Before \cite{www-hackernoon}}\label{fig:one-hot-before}
+\end{figure}
+
+ \begin{figure}[!ht]
+  \centering
+      \includegraphics[width=\columnwidth]{project/images/one-hot-after.png}
+  \caption{Example of One Hot Encoding After \cite{www-hackernoon}}\label{fig:one-hot-after}
+\end{figure}
+
+\section{Data Exploration}
+
+After cleaning the data we started our data exploration to learn little bit more from our data and make necessity changes if needed before putting into our machine learning algorithms. First step in this process is getting the total count of the individuals as well as count of the individuals who are making more than \$50K and less than \$50K which can be seen in below table \ref{my-label-2}.
+
+\begin{center}
+\centering
+\begin{tabular}{ll}
+\hline
+\multicolumn{1}{|l|}{\textbf{Description}} & \multicolumn{1}{l|}{\textbf{Count}} \\ \hline
+Total Number of Individuals                & 30162                               \\ \hline
+Individuals who makes more than \$50K        & 7508                                \\ \hline
+Individuals who makes at or less than \$50K  & 22654                              \\ \hline
+\end{tabular}
+\label{my-label-2}
+\end{center}
+
+\par Moreover, we also look at the statistical values of each of the continuous variable we have. Those values are given in Table \ref{my-label}. As we can see we have individuals who's age ranging from 17 to 90 years old with a mean of 38.58. If we look at the capital gains and capital losses we have standard deviation of 7385 and 402 respectively this is also another indication of skew in these variables. 
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+                    & \textbf{Age} & \textbf{Gain} & \textbf{Loss} & \textbf{Hours} \\ \hline
+\textbf{Number of Instances} & 32,561 & 32,561       & 32,561       & 32,561         \\ \hline
+\textbf{Mean}                & 38.58  & 1077.64      & 87.303       & 40.437         \\ \hline
+\textbf{Standard Deviation}  & 13.640 & 7385.292     & 402.960      & 12.347         \\ \hline
+\textbf{Minimum Value}       & 17     & 0            & 0            & 1              \\ \hline
+\textbf{25th percentile}     & 28     & 0            & 0            & 40             \\ \hline
+\textbf{50th percentile}     & 37     & 0            & 0            & 40             \\ \hline
+\textbf{75th percentile}     & 48     & 0            & 0            & 45             \\ \hline
+\textbf{Maximum Values}      & 90     & 99999        & 4356         & 99             \\ \hline
+\end{tabular}
+\caption{Statistical Summary of Continuous Variables}
+\label{my-label}
+\end{table}
+
+\par We used scatter matrix plot and applied the correlation function to see if we have any strong correlation between any of the variables. As we can see from the correlation matrix Figure \ref{fig:scatter-matrix} and correlation numbers Figure \ref{fig:scatter}we don not have strong correlation between any variables. Correlation values range between -1 to 1. Correlation value of 1 is an indication of perfect positive correlation and correlation number -1 indicates negative correlation between variables \cite{www-investopedia}. Because of lower correlation values it will be really hard to determine the classification by just looking at the correlations, this indicates we have complex algorithms to determine the relationship between variables to classify individuals incomes. 
+
+ \begin{figure}[!ht]
+  \centering
+      \includegraphics[width=\columnwidth]{project/images/scatter.png}
+  \caption{Correlation Matrix \cite{}}\label{fig:scatter-matrix}
+\end{figure}
+
+ \begin{figure}[!ht]
+  \centering
+      \includegraphics[width=\columnwidth]{project/images/scatter-matrix.png}
+  \caption{Scatter Matrix Plot \cite{}}\label{fig:scatter}
+\end{figure}
+
+\par Furthermore, we also explore the capital gains, capital losses, and hours per week variables which we used histogram to plot the data into distribution form so we can see how all these attributes distributed. Reason we do the histogram is we want to see any skewnes in our data. As shown in the histogram graphs \ref{fig:Hist-capital} and  \ref{fig:loss-capital} in capital gains and in capital loss we have highly skewed data  which can cause issues later on in our algorithms. We apply logarithmic function to do highly skewed data to less skewed \cite{www-onlinestat}. Using logarithmic functions adds more value to data from interpretable standpoint and ``it helps to meet the assumptions of inferential statistics \cite{www-onlinestat}``.
+
+ \begin{figure}[!ht]
+  \centering
+      \includegraphics[width=\columnwidth]{project/images/capital-gain.png}
+  \caption{Histogram of Capital Gain \cite{}}\label{fig:Hist-capital}
+\end{figure}
+
+ \begin{figure}[!ht]
+  \centering
+      \includegraphics[width=\columnwidth]{project/images/capital-loss.png}
+  \caption{Histogram of Capital Loss \cite{}}\label{fig:loss-capital}
+\end{figure}
+
+\par Moreover, applying logarithmic function had an impact on distribution. We can see the changes on on skew data in Figure \ref{fig:Hist-capital-log} after applying logarithmic function. 
+
+ \begin{figure}[!ht]
+  \centering
+      \includegraphics[width=\columnwidth]{project/images/logarithmic-applied.png}
+  \caption{After Logarithmic Function Applied Histogram of Capital Gain \cite{}}\label{fig:Hist-capital-log}
+\end{figure}
 
  
 
@@ -54,8 +166,8 @@ Scikit-learn developed by David Cournapeau in 2007. The development came from wh
 
 \begin{itemize}
 \item \textbf{\textit{\underline{Supervised Learning Algorithms:}}} One of the most fundamental reason that Scikit-Learn's popularity comes from highly available supervised learning algorithms. These algorithms vary from regression models to decision trees and many more\cite{www-analyticvidhya}. 
-\item \textbf{\textit{\underline{Cross Validation:}}} Scikit-Learn includes various techniques to check the accuracy or any statistical measure between training and unseen testing set\cite{www-analyticvidhya}. 
-\item \textbf{\textit{\underline{Unsupervised Learning Algorithms:}}} Scikit-Learn had also various algorithms to support many unsupervised algorithms some of these include clustering, factor analysis, and neural network analysis\cite{www-analyticvidhya}. 
+\item \textbf{\textit{\underline{Cross Validation:}}} Scikit-Learn includes various techniqu\-es to check the accuracy or any statistical measure between training and unseen testing set\cite{www-analyticvidhya}. 
+\item \textbf{\textit{\underline{Unsupervised Learning Algorithms:}}} Scikit-Learn had al\-so various algorithms to support many unsupervised algorithms some of these include clustering, factor analysis, and neural network analysis\cite{www-analyticvidhya}. 
 \item \textbf{\textit{\underline{Various example data-sets:}}} Scikit-Learn comes with different data sets included in its package so users can start learning Scikit-Learn without the need of any data-sets\cite{www-analyticvidhya}. 
 \item \textbf{\textit{\underline{Feature extraction:}}} It has rich feature for extracting images or text from data-sets\cite{www-analyticvidhya}.
 \end{itemize}
@@ -64,63 +176,230 @@ Scikit-learn developed by David Cournapeau in 2007. The development came from wh
 
 \begin{itemize}
     \item \textit{Gaussian Naive Bayes}
-    \item \textit{Decision Trees}
+    \item \textit{Logistic Regression}
     \item \textit{K-Nearest Neighbors (KNN)}
     \item \textit{Stochastic Gradient Descent Classifier}
     \item \textit{Support Vector Machines}
-    \item \textit{Logistic Regression} 
+    \item \textit{Decision Trees} 
 \end{itemize}
 
 \subsection{Gaussian Naive Bayes}
 Naive Bayes bring many beneficial features, it is widely popular among machine learning applications\cite{tapan-kumar}. Popularity of Naive Bayes comes from being able to handle large projects and data-sets faster than most algorithms\cite{tapan-kumar}. It also can handle complex data-sets with categorical and non-categorical inputs \cite{tapan-kumar}. Naive Bayes is based on probabilistic classifier of Bayesian theory. It's also popular way of doing text categorization\cite{www-wikipedia-naivebayes}. 
-\par Term naive comes from it's method of use probability among categories which assumes of independence among given class of attributes. In other words, if we try to classify individuals from their email communications it will not take the order of words into account. Where as in English language we can tell the difference of sentence makes sense or not if we randomly re-order our words in the sentences. So it really doesn't understand the text, it only looks at word frequencies as a way to do the classification. This is why it is called ``Naive``.  As we states above Naive Bayes derives from Bayesian Theory where the dimensionality of inputs is relatively high. Bayesian Theorem is stated below \cite{Sayali}. 
+
+\par Term naive comes from it's method of use probability among categories which assumes of independence among given class of attributes \ref{fig:Naive Bayes}. In other words, if we try to classify individuals from their email communications it will not take the order of words into account. Where as in English language we can tell the difference of sentence makes sense or not if we randomly re-order our words in the sentences. So it really doesn't understand the text, it only looks at word frequencies as a way to do the classification. This is why it is called ``Naive``.  
+
+ \begin{figure}[!ht]
+    \centering
+    \graphicspath{{images/}}
+    \includegraphics[width=\columnwidth]{Naive-bayes}
+    \caption{Example of Naive Bayes \cite{Zhang}}\label{fig:Naive Bayes}
+\end{figure}
+
+
+\par As we states above Naive Bayes derives from Bayesian Theory where the dimensionality of inputs is relatively high. Bayesian Theorem is stated below \cite{Sayali}.
+
 \begin{equation}
 P(C \mid X) = \frac{P(X \mid C) \times P(C)} {P(X)}
 \end{equation}
 
 Naive Bayes Classifier works as follows \cite{Sayali}:
 
-Advantages of Naive Bayes:
+\textbf{Advantages of Naive Bayes \cite{Sayali}:}
 \begin{itemize}
 \item Faster classification time for training data-set.
 \item Because of independent classification it improves classification performance.
 \item Performance is relatively good. 
 \end{itemize}
 
-Disadvantages of Naive Bayes:
+\textbf{Disadvantages of Naive Bayes\cite{Sayali}:}
 
 \begin{itemize}
 \item Often it requires large number of data-sets to give adequate results.
-\item On some occasions which is realative to data-sets it can give less accuracy.
+\item On some occasions which is relative to data-sets it can give less accuracy.
 \end{itemize}
 
-\subsection{Decision Trees}
+\subsection{Logistic Regression}
 
+Logistic Regression is widely used for predicting ``probability of failure in a given system, product, and process \cite{adarsh}``. Logistic Regression also used in natural language analysis, it's extension of conditional random fields \cite{adarsh}. It works as a classifier which learns the features from the input given and classifies them by multiplying the input value with the weight weight value \cite{tweet-logistic}.
 
+\begin{equation}
+P(C \mid X) = \sum_{i=1}^{N} W_i \times f_i 
+\end{equation}
 
-\subsection{Ensemble Methods}
+\par Main reason that Logistic Regression differs from Linear Regression is output variable for Logistic Regression is binary where as output variable in Linear Regression is discrete(continuous) \cite{fang-logistic}. 
 
+\textbf{\underline{Advantages of Logistic Regression:}}
+\begin{itemize}
+\item It does not have any assumptions over distribution of classes \cite{www-washington}.
+\item It is fast to train \cite{www-washington}.
+\item Logistic Regression has fast classifying method of unknown data \cite{www-washington}.
+\item We can easily extend to other regression for multiple classes like multinomial regression \cite{www-washington}. 
+\end{itemize}
+
+\textbf{\underline{Disadvantages of Logistic Regression:}}
+
+\begin{itemize}
+\item One of the disadvantage of linear regression is it is not providing flexibility in some instances. What we mean by the `` lack of flexibility is the linear dependency and linear decision boundary in the instance space is not valid\cite{www-old.cs}``. This disadvantage can be improved changing from Logistic Regression to Choquistic Regression\cite{www-old.cs}.
+\item Logistic regression can provide poor results when there is more complex relationships in data \cite{www-elitedatascience}.
+\item Logistic models are also have over-fitting problems which comes from result of sampling bias\cite{www-classroom}.
+\item Because of Logistic Regression's predictions comes from the independent variable if the researcher includes wrong independent variables then model's prediction will have no value\cite{www-classroom}.
+\item Because it's predictions based on 1 and 0 model will have poor performance when predicting continuous variables \cite{www-classroom}. 
+\end{itemize}
 
 
 \subsection{K-Nearest Neighbors (KNN)}
+K Nearest neighbor has been large studied and this popularity comes from it has been applied to many applications some of these applications are ``spatial databases, pattern recognition, geographic information, image retrieval, computer game, and many other applications \cite{Lee2017-knn}``. Due to increase of mobile devices and people tends to use of applications like navigation K-nearest neighbor found itself another widely used area of location based services due to ability to found a target location \cite{Lee2017-knn}. 
+
+\par Intuition behind the K Nearest Neighbor can be described as follows: `` for a set P of n objects and a querying point q, return the k objects in P that are closest to q \cite{Lee2017-knn}.``
 
 
+\textbf{\underline{\textit{Advantages of K Nearest Neighbors:}}}
+\begin{itemize}
+\item K Nearest Neighbor is a basic and simple approach to implement \cite{www-cs.man}.
+\item K Nearest Neighbor can perform well and effective with the large amount of data \cite{www-revoledu}.
+\item K nearest Neighbor also does effectively well with noisy data sets (``if the inverse square of weighted distance used as the distance \cite{www-revoledu}``). In other words it's flexible to feature and distance choices \cite{www-cs.man}.
+\end{itemize}
 
-\subsection{Stochastic Gradient Descent Classifier}
+\textbf{\underline{\textit{Disadvantages of K Nearest Neighbors:}}}
+
+\begin{itemize}
+\item K Nearest Neighbor typically require large dataset to perform well \cite{www-cs.man}. 
+\item Time complexity could be high due to computing distance of each query to all training data points \cite{www-revoledu}. This time might be improved with the some indexing (K-D Tree) \cite{www-revoledu}.
+\item Determining the value of K can be time consuming \cite{www-revoledu}. 
+\item It can be unclear to know which type of distance to use, as well as which variability to use to get the optimal results \cite{www-revoledu}. 
+\item Switching the different K values can result on the predicted class labels \cite{www-nickgillian}. 
+\end{itemize}
+
+Many of these disadvantages are improving with the help of paralel distributing computing. Recent improvements in MapReduce framework allows users to run KNN algorithms in the cluster which had great effect on reducing the computation time \cite{knn-chung}.
+
+\par Another area of improvements on KNN is to implement different mapping functions such as kernel KNN, kernel difference weighted KNN, adaptive quasi-conformal kernel neares neighbor, angular similarity, local linear discriminant analysis, and Dempster-Shafer \cite{ERTUGRUL2017480}. 
+
+\subsection{Decision Trees}
+ 
+Decision Tree is another widely used algorithm model  for classification and regression. Decision Trees uses a recursive split model where each recursive split is identified by each data point, this is an example of non-parametric hierarchical model \cite{HASSAN201752}. 
+\par Representation of decision trees is as follows; we sort the instances from root to leaf nodes, this sorting gives insights about the classification of the instance, every outcome descending from the root node corresponds to possible values for that variable \cite{www-cs.princeton}. We can classify an instance by starting from root node and checking the attributes labeled on that node and moving down from that node based on attribute given attribute values \cite{www-cs.princeton} \ref{fig:Decision Tree}. 
+
+ \begin{figure}[!ht]
+  \centering
+      \includegraphics[width=\columnwidth]{project/images/decison_tree.png}
+  \caption{Example of Decision Tree Construction\cite{www-cs.princeton}}\label{fig:Decision Tree}
+\end{figure}
+
+\textbf{\underline{\textit{Advantages of Decision Trees:}}}
+
+\begin{itemize}
+\item Decision Tree applications are easy to interpret and understand \cite{www-cs.ubb}. This ease comes from their schematic representation \cite{www-cs.ubb}. Interpretation between alternatives can be expressed with single numerical number which is the expected value (EV) \cite{www-cs.ubb}.  
+\item Decision Trees can handle noisy or incomplete data-sets \cite{www-cs.ubb}. In other words it requires little effort of data preparation because of it is flexibility \cite{www-simafore}.  
+\item It can handle both nominal and numerical variables \cite{www-cs.ubb}.
+\item It can be modified easily whenever the new information is available \cite{www-cs.ubb}.
+\item 
+\end{itemize}
+
+
+\textbf{\underline{\textit{Disadvantages of Decision Trees:}}}
+
+\begin{itemize}
+\item Because of it is use of divide and conquer method they can demonstrate well performance if there are few attributes exists, when the attributes level goes into large number decision tree become more complex which will result in poor performance \cite{www-cs.ubb}.
+\item Decision Trees also really sensitive to training set which can give result of over-fitting \cite{www-cs.ubb}. In other words it can believe the training set completely which will give really poor performance on testing set.
+\item ID3 and C4.5 decision tree algorithms requires discrete values as input data. 
+\end{itemize}
+
+\subsection{Stochastic Gradient Descent Classifier (SGD)}
+
+Stochastic Gradient Descent recently got became more popular because of it is large-scale learning ability in machine learning problems \cite{fan-stochastic}. It is a effective and simple way approach of linear classifiers under convex problems which is Support Vector Machines or Conditional Random Fields\cite{www-bottou}. Originality of SGD derives from ``Stochastic Approximation`` which is a work from Robinson and Manroe \cite{Needell2016}. 
+
+\textbf{\underline{\textit{Advantages of Stochastic Gradient Descent:}}}
+
+\begin{itemize}
+\item SGD is 
+\item
+\item
+\end{itemize}
+
+\textbf{\underline{\textit{Disadvantages of Stochastic Gradient Descent:}}}
+
+\begin{itemize}
+\item Stochastic Gradient Descent can be required to have many iteration and it also requires number of hyper-parameters \cite{www-scikit-stochastic-gradient}. 
+\item Feature scaling is a practice which used in standardization of range of independent variables \cite{www-wikipedia-futurescaling}. SGD also used this feature scaling technique and it can sensitive to feature scaling \cite{www-scikit-stochastic-gradient}. 
+\item Another drawback of Stochastic Gradient Descent is while using GPU they are hard to parallelize or distributing them using computer clusters \cite{andrewng-deeplearning}. 
+\end{itemize}
+
 
 
 
 \subsection{Support Vector Machines}
- 
+Support Vector Machines is falls under the classification methods in machine learning \cite{www-simafore-svm}. It is also a powerful classification method that has been widely found itself an area ranging from pattern recognition to text analysis\cite{www-simafore-svm}. 
+\par Fitting a boundary between data points is the principle of the support vector machines. This boundary divides the data points between classes, each similar data point puts under the same class classification \cite{www-simafore-svm}. After training the support vector machines with training data-set, we only need to check whether the test data lies under the boundaries for testing set. Another thing to consider is after it creates the boundaries of the data remaining training data becomes obsolete because we only need core set of points which supports the boundaries boundaries to classify the new data set. This core data points called ``support vectors``. It's called vector because of each data point contains a row of observed data values for attributes \cite{www-simafore-svm}. 
+
+ \begin{figure}[!ht]
+  \centering
+      \includegraphics[width=\columnwidth]{project/images/hyperplane-boundary.png}
+  \caption{Example of Shows the Hyperplanes \cite{www-simafore-svm}}\label{fig:Hyperplane}
+\end{figure}
+
+\par Traditionally boundaries are called ``hyperplanes`` and it is used to describe boundaries in more than 3 dimensions because they are hard or sometimes impossible to visualize.\cite{www-simafore}. \ref{fig:Hyperplane}. Optimality of hyperplane is expressed as linear function which requires maximum distance between the identified classes. It only considers small number of training example to build this hyperplane. SVM hyperplanes based on `` seperation of positive (+1) and negative (-1) with the largest margin \cite{verma-ssv}``.
+
+\par One of the main characteristic of the machine learning is to generalization. In other words we want to give an general idea that tends to fit any of our testing data set optimally. Support vector machines are a really good in terms of generalizations because once the trainig data fitted by the support vector machines other than support vector data inside the trainig data becomes redundant which means that even with the small changes inside the data will not have major effect on general boundaries \cite{www-simafore-svm}. 
+
+\textbf{\underline{\textit{Advantages of Support Vector Machines:}}} 
+\begin{itemize}
+\item Generalizes the data well with the help  of boundaries. Which reduces the overfitting \cite{www-simafore-svm}.
+\item Classification accuracy in basic support vector machine will yield a 95 percent accuracy with a default settings \cite{www-simafore-svm}. 
+\item SVM can deliver a unique solution, because of optimality solution is convex. This will give advantage over Neural Networks which has multiple solutions in local minima \cite{berlin-svm}.
+\end{itemize}
+
+\textbf{\underline{\textit{Disadvantages of Support Vector Machines:}}}
+
+\begin{itemize}
+\item One common disadvantage of SVM is the lack of transparency because of its non-parametric techniques \cite{berlin-svm}.
+\item Another biggest disadvantage of SVM is it requires high algorithmic complexity and high level of memory for the large scale implementations \cite{verma-ssv}. 
+\item According to Burgees, biggest limitation of the SVM is in the choice of kernel \cite{Burges1998}.
+\end{itemize}
+
+\subsection{Ensemble Methods}
+Ensemble methods goes into classification algorithm category, they are learning algorithms which uses weighted vote for it is prediction methods in other words it is learns rules over a small subset of data then we combine these rules which we learn from the small subset of data to make predictions and/or classification on the testing data \cite{dietterich-ensemble}. Originality of the Ensemble method comes from Bayesian averaging, but with the recent algorithms include ``Bagging, error-correcting, and boosting \cite{dietterich-ensemble}``. 
+
+\par Bagging refers to simply the looking at data-sets and dividing the data-set to it is small subsets then learning the rules of that particular small subset. Next step is combining each learned rule from subsets to apply into bigger data set. Combining method mostly done with averaging the learned rules. Bagging also does better on testing set than normal Linear Regression analysis and linear regression does better on training set especially in 3rd order polynomial \cite{dietterich-ensemble}.  
+
+\par Stacking 
+
+\par Boosting is another method used in Ensemble Methods. Difference from bagging is in boosting we need to pick subsets or examples that we are not good at in other words hardest examples. Then we combine these learned rules with the weighted mean instead mean used in bagging method. 
+
+\par Boosting is little different then bagging. 
+
+\textbf{\underline{\textit{Advantages of Ensemble Methods:}}} 
+\begin{itemize}
+\item
+\item
+\item
+\end{itemize}
+
+\textbf{\underline{\textit{Disadvantages of Ensemble Methods:}}}
+\begin{itemize}
+\item
+\item
+\item
+\end{itemize}
 
 
-\subsection{Logistic Regression}
+\section{Fitting Data Into Machine Learning Algorithms}
 
+In this section we will show the techniques we used on execution of the prepared data into machine learning algorithms. Before fitting the data into the machine learning algorithms, we split the data into two sets. These sets are the training set and the testing set. We do splitting because of gaining an access of the future data will most likely be hard before future occurs, and because of this fact it is an good idea to test our model with a dataset which our model has not seen it \cite{www-salford}. 
+\par We used scikit-learn for splitting data into train and test we saved 20\% of data for testing purposes as shown in Table \ref{split} . 
 
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Splitting the Data} & \textbf{Sample Size} \\ \hline
+Training                    & 24129                \\ \hline
+Testing                     & 6033                 \\ \hline
+\end{tabular}
+\caption{Train-Test-Split}
+\label{split}
+\end{table}
 
-
-
-
+\par Furthermore, after splitting the data we put all of our training data into to each of the machine learning algorithm to get their prediction results. We also provided code at beginning and the end of the each algorithm to calculate their running time.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
