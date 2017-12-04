@@ -1,6 +1,7 @@
 # Project Title
 
-Income Classification with Supervised Machine Learning Algorithms  
+Income Classification with Supervised Machine Learning Algorithms and Their Performance 
+
 
 ## Getting Started
 
@@ -12,10 +13,10 @@ Things you need to install in your local computer are given below.
 
 ```
 - [NumPy](http://www.numpy.org/)
-- [Pandas](http://pandas.pydata.org)
-- [matplotlib](http://matplotlib.org/)
-- [scikit-learn](http://scikit-learn.org/stable/)
-- [Ipython] (https://jupyter.readthedocs.io/en/latest/install.html)
+- [Pandas]
+- [matplotlib]
+- [scikit-learn]
+- [Ipython] 
 ```
 
 ### Installing
@@ -57,7 +58,13 @@ Then you can see in your Jupyter notebook both Python 2.7 and 3.5 versions.
 * [Python 2.7](http://www.dropwizard.io/1.0.2/docs/) - The code framework used.
 * [Anaconda](https://maven.apache.org/) 
 * [scikit-learn](https://rometools.github.io/rome/) - Used to generate machine learning predictions. 
+* [Ipython](https://jupyter.readthedocs.io/en/latest/install.html)
+* [NumPy](http://www.numpy.org/)
 
+## Data 
+
+Data used in this project can be found in;
+* [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/machine-learning-databases/adult/)
 
 ## Authors
 
