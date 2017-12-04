@@ -50,7 +50,9 @@ If you have Python 2;
 python3 -m pip install ipykernel
 python3 -m ipykernel install --user
 ```
-Then you can see in your Jupyter notebook both Python 2.7 and 3.5 versions. 
+Then you can see in your Jupyter notebook both Python 2.7 and 3.5 versions shown in below picture. 
+
+![alt text](https://preview.ibb.co/gKZSSw/Screen_Shot_2017_12_04_at_3_14_37_AM.png)
 
 
 ## Built With
