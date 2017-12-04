@@ -30,7 +30,7 @@ paper2:
     url: https://github.com/bigdata-i523/hid343/paper2/report.pdf
 project:
     review: Dec 4 2017
-    abstract: Classifiying the individuals income with using supervised machine learning techniques. 
+    abstract: This project takes a closer look to some of the most used supervised learning algorithms in machine learning. We start with the description of the each of the algorithms then we move it to analytics and findings by using that particular algorithm in our data-set. We also provide advantages and disadvantages of each supervised machine learning algorithm for future reference. We mainly focus on our prediction of the income level of individuals by looking at their age, gender, education, location, and other features given by our data-set. We will try each algorithm and try to pick the best features from our data-set to have an optimal prediction. 
     author: 
         - Borga Edionse Usifo
     chapter: Machine Learning 
