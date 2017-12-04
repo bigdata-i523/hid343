@@ -121,13 +121,13 @@ Individuals who makes at or less than \$50K  & 22654                            
  \begin{figure}[!ht]
   \centering
       \includegraphics[width=\columnwidth]{project/images/scatter.png}
-  \caption{Correlation Matrix \cite{}}\label{fig:scatter-matrix}
+  \caption{Correlation Matrix \cite{Borga2017}}\label{fig:scatter-matrix}
 \end{figure}
 
  \begin{figure}[!ht]
   \centering
       \includegraphics[width=\columnwidth]{project/images/scatter-matrix.png}
-  \caption{Scatter Matrix Plot \cite{}}\label{fig:scatter}
+  \caption{Scatter Matrix Plot \cite{Borga2017}}\label{fig:scatter}
 \end{figure}
 
 \par Furthermore, we also explore the capital gains, capital losses, and hours per week variables which we used histogram to plot the data into distribution form so we can see how all these attributes distributed. Reason we do the histogram is we want to see any skewnes in our data. As shown in the histogram graphs \ref{fig:Hist-capital} and  \ref{fig:loss-capital} in capital gains and in capital loss we have highly skewed data  which can cause issues later on in our algorithms. We apply logarithmic function to do highly skewed data to less skewed \cite{www-onlinestat}. Using logarithmic functions adds more value to data from interpretable standpoint and ``it helps to meet the assumptions of inferential statistics \cite{www-onlinestat}``.
@@ -135,13 +135,13 @@ Individuals who makes at or less than \$50K  & 22654                            
  \begin{figure}[!ht]
   \centering
       \includegraphics[width=\columnwidth]{project/images/capital-gain.png}
-  \caption{Histogram of Capital Gain \cite{}}\label{fig:Hist-capital}
+  \caption{Histogram of Capital Gain \cite{Borga2017}}\label{fig:Hist-capital}
 \end{figure}
 
  \begin{figure}[!ht]
   \centering
       \includegraphics[width=\columnwidth]{project/images/capital-loss.png}
-  \caption{Histogram of Capital Loss \cite{}}\label{fig:loss-capital}
+  \caption{Histogram of Capital Loss \cite{Borga2017}}\label{fig:loss-capital}
 \end{figure}
 
 \par Moreover, applying logarithmic function had an impact on distribution. We can see the changes on on skew data in Figure \ref{fig:Hist-capital-log} after applying logarithmic function. 
@@ -149,7 +149,7 @@ Individuals who makes at or less than \$50K  & 22654                            
  \begin{figure}[!ht]
   \centering
       \includegraphics[width=\columnwidth]{project/images/logarithmic-applied.png}
-  \caption{After Logarithmic Function Applied Histogram of Capital Gain \cite{}}\label{fig:Hist-capital-log}
+  \caption{After Logarithmic Function Applied Histogram of Capital Gain \cite{Borga2017}}\label{fig:Hist-capital-log}
 \end{figure}
 
  
@@ -414,7 +414,7 @@ Testing                     & 6033                 \\ \hline
 \subsubsection{\textbf{\underline{Confusion Matrix:}}}
 Confusion matrix develops from 4 key elements. These elements are true positive, true negative, false negative, and false positive. As shown in Figure \ref{fig:confusion-matrix} about the constructing a confusion matrix. If we want to build a confusion matrix by targeting individuals who are making more than \$50K our true positive, true negative, false positive, and false negative are explained below. 
 
- \begin{figure}[!ht]
+\begin{figure}[!ht]
   \centering
       \includegraphics[width=\columnwidth]{project/images/confusion-matrix.png}
   \caption{Example of Confusion Matrix Construction \cite{www-exsilio}}\label{fig:confusion-matrix}
@@ -457,6 +457,45 @@ F-1 score is the idea of giving decision by looking at only one score which will
 \begin{equation}
 F1 Score = 2 \times {\frac{Precision \times Recall} {Precision + Recall}}
 \end{equation}
+
+\subsection{Results}
+Now we can look at the results from each of the machine learnign algorithm. Results also showed in Table \ref{result-table} with the visualization of Figure \ref{fig:result-algo}.
+
+\begin{table}
+\centering
+\begin{tabular}{lllll}
+\hline
+Name                                & Accuracy                    & Recall                      & Precision                   & F1 Score                    \\ \hline
+\multicolumn{1}{|l|}{Naive Bayes}   & \multicolumn{1}{l|}{0.4442} & \multicolumn{1}{l|}{0.4642} & \multicolumn{1}{l|}{0.9680} & \multicolumn{1}{l|}{0.3053} \\ \hline
+\multicolumn{1}{|l|}{SVC}           & \multicolumn{1}{l|}{0.8301} & \multicolumn{1}{l|}{0.5969} & \multicolumn{1}{l|}{0.5056} & \multicolumn{1}{l|}{0.7284} \\ \hline
+\multicolumn{1}{|l|}{AdaBoost}      & \multicolumn{1}{l|}{0.8499} & \multicolumn{1}{l|}{0.6724} & \multicolumn{1}{l|}{0.6189} & \multicolumn{1}{l|}{0.7361} \\ \hline
+\multicolumn{1}{|l|}{KNN}           & \multicolumn{1}{l|}{0.8184} & \multicolumn{1}{l|}{0.6090} & \multicolumn{1}{l|}{0.5682} & \multicolumn{1}{l|}{0.6561} \\ \hline
+\multicolumn{1}{|l|}{Decision Tree} & \multicolumn{1}{l|}{0.8161} & \multicolumn{1}{l|}{0.6231} & \multicolumn{1}{l|}{0.6109} & \multicolumn{1}{l|}{0.6459} \\ \hline
+\end{tabular}
+\caption{Results of the Algorithms \cite{Borga2017}}
+\label{result-table}
+\end{table}
+
+\subsubsection{\textbf{\underline{Naive Bayes:}}} 
+As shown in the Figure \ref{fig:result-algo} we have comparison of several supervised machine learning algorithms on our dataset. We can clearly see that from the accuracy standpoint Naive Bayes algorithms have the lowest score which means that it did not go a good job for labeling true positives regards to all data but it did a good job in precision standpoint while doing a bad classification from recall standpoint. Two key element for us in this situation is accuracy and f1 score(which consist from precision and recall). 
+\subsubsection{\textbf{\underline{Support Vector Machine:}}}
+Support Vector Machine is the second best algorithm in our case. This algorithms did very well job on classification it has the second highest accuracy and f1 score. 
+\subsubsection{\textbf{\underline{AdaBoost:}}}
+As we stated before ensemble algorithms learn from the small portion of the data and combine these learning to do predictive task. As shown in Figure \ref{fig:result-algo} adaboosting has the highes accuracy score among all the other algorithms. This algorithm should be our first choice to do predictive modeling. We believe that there is still an improvements on accuracy 
+\subsubsection{\textbf{\underline{K-Nearest Neighboors:}}}
+K-Nearest Neighbor algorithm in our project we set the k value to 5. K Nearest Neighbor algorithm also did a good job by placing itself third in accuracy. 
+
+\subsubsection{\textbf{\underline{Decision Tree:}}} 
+Decision Tree is gave a good accuracy but fall behind on f1 score as shown in Figure \ref{fig:result-algo}. 
+
+
+
+
+\begin{figure}[!ht]
+  \centering
+      \includegraphics[width=\columnwidth]{project/images/result-score.png}
+  \caption{Supervised Learning Algorithm Results \cite{Borga2017}}\label{fig:result-algo}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
