@@ -164,13 +164,13 @@ We have multiple algorithms to consider when we are doing the supervised learnin
 \subsection{Why Scikit-Learn?}
 Scikit-learn developed by David Cournapeau in 2007. The development came from while he was working on summer code project for Google. After recognized and published by INRIA in 2010 project start the get more attention among worldwide. There are more than 30 active contributors and has secured several sponsorships from big technology companies\cite{www-machinelearningmystery}. ``It also has a goal of provide common algorithms to Python users through consistent interface\cite{www-oreily}``. Scikit-Learn consists of several elements to make analytical predictions. These elements are shown below\cite{www-analyticvidhya}:
 
-\begin{itemize}
-\item \textbf{\textit{\underline{Supervised Learning Algorithms:}}} One of the most fundamental reason that Scikit-Learn's popularity comes from highly available supervised learning algorithms. These algorithms vary from regression models to decision trees and many more\cite{www-analyticvidhya}. 
-\item \textbf{\textit{\underline{Cross Validation:}}} Scikit-Learn includes various techniqu\-es to check the accuracy or any statistical measure between training and unseen testing set\cite{www-analyticvidhya}. 
-\item \textbf{\textit{\underline{Unsupervised Learning Algorithms:}}} Scikit-Learn had al\-so various algorithms to support many unsupervised algorithms some of these include clustering, factor analysis, and neural network analysis\cite{www-analyticvidhya}. 
-\item \textbf{\textit{\underline{Various example data-sets:}}} Scikit-Learn comes with different data sets included in its package so users can start learning Scikit-Learn without the need of any data-sets\cite{www-analyticvidhya}. 
-\item \textbf{\textit{\underline{Feature extraction:}}} It has rich feature for extracting images or text from data-sets\cite{www-analyticvidhya}.
-\end{itemize}
+
+\par \textbf{\textit{\underline{Supervised Learning Algorithms:}}} One of the most fundamental reason that Scikit-Learn's popularity comes from highly available supervised learning algorithms. These algorithms vary from regression models to decision trees and many more\cite{www-analyticvidhya}. 
+\par \textbf{\textit{\underline{Cross Validation:}}} Scikit-Learn includes various techniqu\-es to check the accuracy or any statistical measure between training and unseen testing set\cite{www-analyticvidhya}. 
+\par \textbf{\textit{\underline{Unsupervised Learning Algorithms:}}} Scikit-Learn had al\-so various algorithms to support many unsupervised algorithms some of these include clustering, factor analysis, and neural network analysis\cite{www-analyticvidhya}. 
+\par \textbf{\textit{\underline{Various example data-sets:}}} Scikit-Learn comes with different data sets included in its package so users can start learning Scikit-Learn without the need of any data-sets\cite{www-analyticvidhya}. 
+\par \textbf{\textit{\underline{Feature extraction:}}} It has rich feature for extracting images or text from data-sets\cite{www-analyticvidhya}.
+
 
 \par Algorithms that we will investigate are shown below; we will go more deep analysis on each of these algorithms. 
 
@@ -400,6 +400,63 @@ Testing                     & 6033                 \\ \hline
 \end{table}
 
 \par Furthermore, after splitting the data we put all of our training data into to each of the machine learning algorithm to get their prediction results. We also provided code at beginning and the end of the each algorithm to calculate their running time.
+
+\par Before we move further we need to discuss key characteristics of a machine learning algorithm. These are;
+
+\begin{itemize}
+    \item Confusion Matrix
+    \item Accuracy
+    \item Recall
+    \item F-1 Score
+    \item Precision 
+\end{itemize}
+
+\subsubsection{\textbf{\underline{Confusion Matrix:}}}
+Confusion matrix develops from 4 key elements. These elements are true positive, true negative, false negative, and false positive. As shown in Figure \ref{fig:confusion-matrix} about the constructing a confusion matrix. If we want to build a confusion matrix by targeting individuals who are making more than \$50K our true positive, true negative, false positive, and false negative are explained below. 
+
+ \begin{figure}[!ht]
+  \centering
+      \includegraphics[width=\columnwidth]{project/images/confusion-matrix.png}
+  \caption{Example of Confusion Matrix Construction \cite{www-exsilio}}\label{fig:confusion-matrix}
+\end{figure}
+
+\par \textbf{\textit{True Positive (TP):}} We can explain true positive as if the individuals makes more than \$50K and our model correctly classifies them as individuals who makes more than \$50K, then this individual is in higher income range, in this case we call it a true positive \cite{www-exsilio}. 
+
+\par \textbf{\textit{True Negative (TN):}} Intuition of true negative is if a individual makes less than \$50K and our model correctly classifies them as individuals who makes less then \$50K, then this individual is in lower income range. We call this true negative \cite{www-exsilio}. 
+
+\par \textbf{\textit{False Negative (FN):}} When an individual is makes less than \$50K and our model incorrectly classifies them in higher income range by making mistake causes a false negative to happen \cite{www-exsilio}.
+
+\par \textbf{\textit{False Positive (FP):}} When an individual is making more than \$50K and our model classifies them in lower income range by mistake. This is called false positive \cite{www-exsilio}. 
+
+\subsubsection{\textbf{\underline{Accuracy:}}}
+Accuracy answers the question of how good is the model is. In our case this question will be out of all the individuals, how many did the models classified the individuals correctly. Mathematical expression of the accuracy is the ratio between the number of correctly classified points and the number of total points. We can think that if we have high accuracy our model is really good but this is only where we have identical false positive and false negative values in our dataset \cite{www-exsilio}.
+
+\begin{equation}
+Accuracy = \frac{TP + TN} {TP + FP + FN + TN}
+\end{equation}
+
+\subsubsection{\textbf{\underline{Precision:}}}
+Precision answers the questions of out of all the points predicted to be positive how many of them were actually positive? If we translates this question into our case we will have out of all the individuals that we are classified as lower income how many were actually have lower income. Higher precision indicates that we have low false positive rate \cite{www-exsilio}. Mathematical expression of precision is; 
+
+\begin{equation}
+Precision = \frac{TP} {TP + FP}
+\end{equation}
+
+\subsubsection{\textbf{\underline{Recall (Sensitivity):}}}
+
+Recall answers the question of ``out of the points that are labeled positive how many of them were correctly predicted is positive ? ``. If we translate this to our case we will have ``out of the points that are labeled higher income how many of them correctly predicted is in higher income range ? ``. Mathmatical expression of the recall is; 
+
+\begin{equation}
+Precision = \frac{TP} {TP + FN}
+\end{equation}
+
+\subsubsection{\textbf{\underline{F-1 Score:}}}
+
+F-1 score is the idea of giving decision by looking at only one score which will include  precision, and recall scores. We can't just take the average of precision and recall because if either of them is very low. We need an number to be low, even id the other one is not. This will leads us to looking at the harmonic mean, and it works as follow. Let's say we have two numbers X and Y. X is smaller than Y, and we have the arithmetic mean over here and it always lies between X and Y. Actually, it is a mathematical fact that the harmonic mean is always less than the arithmetic mean which is closer to the smaller number than to the higher number. Mathematical expression of F-1 score is; 
+
+\begin{equation}
+F1 Score = 2 \times {\frac{Precision \times Recall} {Precision + Recall}}
+\end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
