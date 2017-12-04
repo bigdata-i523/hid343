@@ -66,7 +66,7 @@ Individuals who makes at or less than \$ 50K & 0  \\
 \end{tabular}
 \end{center}
 
-\par Our shape of the data will also receive impact from changing to numerical. Our number of futures will go from 14 to 103. This is because we implemented one-hot-encode to our dataset. It is called one hot encoded because we transform the categorical variables into a more understandable shape for the machine learning algorithms to perform well \cite{www-hackernoon}. In other words ``we implement binarization of the category to include as a future to train model \cite{www-hackernoon}``. As we can see in Figure \ref{fig:one-hot-before} and Figure\ref{fig:one-hot-after}.
+\par Our shape of the data will also receive impact from changing to numerical. Our number of futures will go from 14 to 103. This is because we implemented one-hot-encode to our dataset. It is called one hot encoded because we transform the categorical variables into a more understandable shape for the machine learning algorithms to perform well \cite{www-hackernoon}. In other words ``we implement binarization of the category to include as a future to train model \cite{www-hackernoon}``. As we can see in Figure \ref{fig:one-hot-before} and Figure \ref{fig:one-hot-after}.
 
  \begin{figure}[!ht]
   \centering
@@ -82,7 +82,7 @@ Individuals who makes at or less than \$ 50K & 0  \\
 
 \section{Data Exploration}
 
-After cleaning the data we started our data exploration to learn little bit more from our data and make necessity changes if needed before putting into our machine learning algorithms. First step in this process is getting the total count of the individuals as well as count of the individuals who are making more than \$50K and less than \$50K which can be seen in below table \ref{my-label-2}.
+After cleaning the data we started our data exploration to learn little bit more from our data and make necessity changes if needed before putting into our machine learning algorithms. First step in this process is getting the total count of the individuals as well as count of the individuals who are making more than \$50K and less than \$50K which can be seen in below Table \ref{my-label-2}.
 
 \begin{center}
 \centering
@@ -130,7 +130,7 @@ Individuals who makes at or less than \$50K  & 22654                            
   \caption{Scatter Matrix Plot \cite{Borga2017}}\label{fig:scatter}
 \end{figure}
 
-\par Furthermore, we also explore the capital gains, capital losses, and hours per week variables which we used histogram to plot the data into distribution form so we can see how all these attributes distributed. Reason we do the histogram is we want to see any skewnes in our data. As shown in the histogram graphs \ref{fig:Hist-capital} and  \ref{fig:loss-capital} in capital gains and in capital loss we have highly skewed data  which can cause issues later on in our algorithms. We apply logarithmic function to do highly skewed data to less skewed \cite{www-onlinestat}. Using logarithmic functions adds more value to data from interpretable standpoint and ``it helps to meet the assumptions of inferential statistics \cite{www-onlinestat}``.
+\par Furthermore, we also explore the capital gains, capital losses, and hours per week variables which we used histogram to plot the data into distribution form so we can see how all these attributes distributed. Reason we do the histogram is we want to see any skewnes in our data. As shown in the histogram graphs in Figure \ref{fig:Hist-capital} and  Figure \ref{fig:loss-capital} in capital gains and in capital loss we have highly skewed data  which can cause issues later on in our algorithms. We apply logarithmic function to do highly skewed data to less skewed \cite{www-onlinestat}. Using logarithmic functions adds more value to data from interpretable standpoint and ``it helps to meet the assumptions of inferential statistics \cite{www-onlinestat}``.
 
  \begin{figure}[!ht]
   \centering
@@ -186,7 +186,7 @@ Scikit-learn developed by David Cournapeau in 2007. The development came from wh
 \subsection{Gaussian Naive Bayes}
 Naive Bayes bring many beneficial features, it is widely popular among machine learning applications\cite{tapan-kumar}. Popularity of Naive Bayes comes from being able to handle large projects and data-sets faster than most algorithms\cite{tapan-kumar}. It also can handle complex data-sets with categorical and non-categorical inputs \cite{tapan-kumar}. Naive Bayes is based on probabilistic classifier of Bayesian theory. It's also popular way of doing text categorization\cite{www-wikipedia-naivebayes}. 
 
-\par Term naive comes from it's method of use probability among categories which assumes of independence among given class of attributes \ref{fig:Naive Bayes}. In other words, if we try to classify individuals from their email communications it will not take the order of words into account. Where as in English language we can tell the difference of sentence makes sense or not if we randomly re-order our words in the sentences. So it really doesn't understand the text, it only looks at word frequencies as a way to do the classification. This is why it is called ``Naive``.  
+\par Term naive comes from it's method of use probability among categories which assumes of independence among given class of attributes as shown in Figure \ref{fig:Naive Bayes}. In other words, if we try to classify individuals from their email communications it will not take the order of words into account. Where as in English language we can tell the difference of sentence makes sense or not if we randomly re-order our words in the sentences. So it really doesn't understand the text, it only looks at word frequencies as a way to do the classification. This is why it is called ``Naive``.  
 
  \begin{figure}[!ht]
     \centering
@@ -277,7 +277,7 @@ Many of these disadvantages are improving with the help of paralel distributing 
 \subsection{Decision Trees}
  
 Decision Tree is another widely used algorithm model  for classification and regression. Decision Trees uses a recursive split model where each recursive split is identified by each data point, this is an example of non-parametric hierarchical model \cite{HASSAN201752}. 
-\par Representation of decision trees is as follows; we sort the instances from root to leaf nodes, this sorting gives insights about the classification of the instance, every outcome descending from the root node corresponds to possible values for that variable \cite{www-cs.princeton}. We can classify an instance by starting from root node and checking the attributes labeled on that node and moving down from that node based on attribute given attribute values \cite{www-cs.princeton} \ref{fig:Decision Tree}. 
+\par Representation of decision trees is as follows; we sort the instances from root to leaf nodes, this sorting gives insights about the classification of the instance, every outcome descending from the root node corresponds to possible values for that variable \cite{www-cs.princeton}. We can classify an instance by starting from root node and checking the attributes labeled on that node and moving down from that node based on attribute given attribute values \cite{www-cs.princeton} as shown in Figure \ref{fig:Decision Tree}. 
 
  \begin{figure}[!ht]
   \centering
@@ -337,7 +337,7 @@ Support Vector Machines is falls under the classification methods in machine lea
   \caption{Example of Shows the Hyperplanes \cite{www-simafore-svm}}\label{fig:Hyperplane}
 \end{figure}
 
-\par Traditionally boundaries are called ``hyperplanes`` and it is used to describe boundaries in more than 3 dimensions because they are hard or sometimes impossible to visualize.\cite{www-simafore}. \ref{fig:Hyperplane}. Optimality of hyperplane is expressed as linear function which requires maximum distance between the identified classes. It only considers small number of training example to build this hyperplane. SVM hyperplanes based on `` seperation of positive (+1) and negative (-1) with the largest margin \cite{verma-ssv}``.
+\par Traditionally boundaries are called ``hyperplanes`` and it is used to describe boundaries in more than 3 dimensions because they are hard or sometimes impossible to visualize.\cite{www-simafore}. Figure \ref{fig:Hyperplane}. Optimality of hyperplane is expressed as linear function which requires maximum distance between the identified classes. It only considers small number of training example to build this hyperplane. SVM hyperplanes based on `` seperation of positive (+1) and negative (-1) with the largest margin \cite{verma-ssv}``.
 
 \par One of the main characteristic of the machine learning is to generalization. In other words we want to give an general idea that tends to fit any of our testing data set optimally. Support vector machines are a really good in terms of generalizations because once the trainig data fitted by the support vector machines other than support vector data inside the trainig data becomes redundant which means that even with the small changes inside the data will not have major effect on general boundaries \cite{www-simafore-svm}. 
 
@@ -459,9 +459,9 @@ F1 Score = 2 \times {\frac{Precision \times Recall} {Precision + Recall}}
 \end{equation}
 
 \subsection{Results}
-Now we can look at the results from each of the machine learnign algorithm. Results also showed in Table \ref{result-table} with the visualization of Figure \ref{fig:result-algo}.
+Now we can look at the results from each of the machine learning algorithm. Results also showed in Table \ref{result-table} with the visualization of Figure \ref{fig:result-algo}.
 
-\begin{table}
+\begin{table}[!ht]
 \centering
 \begin{tabular}{lllll}
 \hline
