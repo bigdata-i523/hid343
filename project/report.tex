@@ -88,17 +88,21 @@ Individuals who makes at or less than \$50K & 0              \\ \hline
 
 \par Our shape of the data will also receive impact from changing to numerical. Our number of futures will go from 14 to 103. This is because we implemented one-hot-encode to our dataset. It is called one hot encoded because we transform the categorical variables into a more acceptable shape for the machine learning algorithms to perform well \cite{www-hackernoon}. In other words ``we implement binarization of the category to include as a future to train model \cite{www-hackernoon}``. As we can see in Table \ref{one-hot-before} and Table \ref{one-hot-after}.
 
+
 \begin{table}[!ht]
 \centering
-\begin{tabular}{|l|l|}
+\begin{tabular}{|l|l|l|}
 \hline
-Description                                 & Assigned Value \\ \hline
-Individuals who makes more than \$50K       & 1              \\ \hline
-Individuals who makes at or less than \$50K & 0              \\ \hline
+\textbf{Company Name} & \textbf{Categorical Variable} & \textbf{Price} \\ \hline
+VW                    & 1                             & 2000           \\ \hline
+Acura                 & 2                             & 10011          \\ \hline
+Honda                 & 3                             & 50000          \\ \hline
+Honda                 & 3                             & 10000          \\ \hline
 \end{tabular}
-\caption{Example of One Hot Encoding \cite{www-hackernoon}.}
+\caption{Example of One Hot Encoding Before \cite{www-hackernoon}.}
 \label{one-hot-before}
 \end{table}
+
 
 \begin{table}[!ht]
 \centering
@@ -119,17 +123,19 @@ VW & Acura & Honda & Price  \\ \hline
 
 After cleaning the data, we started our data exploration to learn little bit more from our data and make necessary changes if needed before putting into our machine learning algorithms. The first step in this process is getting the total count of the individuals as well as the count of the individuals who are making more than \$50K and less than \$50K which can be seen in below Table \ref{my-label-2}.
 
-\begin{center}
+\begin{table}[!ht]
 \centering
-\begin{tabular}{ll}
+\begin{tabular}{|l|l|}
 \hline
-\multicolumn{1}{|l|}{\textbf{Description}} & \multicolumn{1}{l|}{\textbf{Count}} \\ \hline
-Total Number of Individuals                & 30162                               \\ \hline
-Individuals who makes more than \$50K        & 7508                                \\ \hline
-Individuals who makes at or less than \$50K  & 22654                              \\ \hline
+\textbf{Description}                        & \textbf{Count} \\ \hline
+Total Number of Individuals                 & 30162          \\ \hline
+Individuals who makes more than \$50K       & 7508           \\ \hline
+Individuals who makes at or less than \$50K & 22654          \\ \hline
 \end{tabular}
+\caption{Count of Income Variable Regarding to Individuals}
 \label{my-label-2}
-\end{center}
+\end{table}
+
 
 \par Moreover, we also look at the statistical values of each of the continuous variable we have. Those values given in Table \ref{my-label}. As we can see we have individuals who're age ranging from 17 to 90 years old with a mean of 38.58. If we look at the capital gains and capital losses, we have a standard deviation of 7385 and 402 respectively this is also another indication of skew in these variables. 
 
